@@ -1,0 +1,51 @@
+Notes 10/30 Github
+
+Git commands:
+git clone ##ssh address on github##
+Adds a repository from GitHub to your computer in whatever you working directory is
+
+git add .
+Stages the git clone folder you are in (make sure to go into git folder as your working directory.)
+
+git commit -m "comment anything here"
+This commits any changes to be sent out.
+
+git push
+This pushes the committed changes to GitHub to be published.
+
+git pull
+This retrieves any changes from GitHub that have been made into your clone folder.
+
+
+Commands
+Vocab
+
+
+
+
+Structure
+	/users/Scott/desktop is the desktop location within those folders, / at the beginning is root.
+	Absolute path dictates the entire path, relative path dictates path relative to working location
+	-p -v is the same as -pv
+	-p is an example of an option. They perform specific tasks as defined by the instructions for the command. You must type the “-“ with the option
+
+
+
+
+Tips
+	
+
+
+
+Examples 	
+
+
+Version control
+
+
+
+
+
+
+
+	

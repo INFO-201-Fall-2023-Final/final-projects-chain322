@@ -1,0 +1,63 @@
+~purchasing pweor column a date to just year
+1913
+~ all races part line 6 create manual cloumn for race, and apply all races
+~apply cpi purchasing power info with new date format by doing range low for year and high for year
+~ 2 new columns in household income (one for low end and one for high end of CPI purchasing power), avg for summarization
+
+Basic template for join:
+
+
+inner_join_result <- inner_join(df1, df2, by = "key_column")
+
+
+left_join_result <- left_join(df1, df2, by = "key_column")
+
+
+right_join_result <- right_join(df1, df2, by = "key_column")
+
+
+full_join_result <- full_join(df1, df2, by = "key_column")
+
+
+How to filter data:
+
+filtered_data <- filter(your_dataset, condition_column == filter_condition)
+
+
+
+How to aggregate data:
+
+# Aggregate data based on a grouping variable
+grouped_data <- group_by(your_dataset, group_by_column)
+aggregated_data <- summarize(
+  grouped_data,
+  total_count = n(),
+  average_value = mean(numerical_column),
+  max_value = max(numerical_column)
+  # Add additional summary statistics as needed
+)
+
+adding new columns:
+
+library(dplyr)
+
+# If dataset is in a CSV file, you can read it using read.csv("your_file.csv")
+
+# Create a new categorical variable
+your_dataset$new_categorical_variable <- factor(ifelse(your_dataset$condition, "Category A", "Category B"))
+
+# Create a new continuous/numerical variable
+your_dataset$new_numerical_variable <- your_function_to_generate_numerical_values()
+
+# Summarization data frame
+summarization_table <- summarise(
+  group_by(your_dataset, new_categorical_variable),
+  total_count = n(),
+  average_numeric = mean(new_numerical_variable),
+  max_numeric = max(new_numerical_variable)
+  # Add additional summary statistics as needed
+)
+
+
+
+Data Nutition labeL
