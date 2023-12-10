@@ -25,14 +25,14 @@ filtered_df <- subset(inflation_df, Race == "all")
 # We used grep here to find the indices of the rows where the race column has white.
 white_race_df <- inflation_df[grep("white", inflation_df$Race, ignore.case = TRUE), ]
 avg_median_inc <- tapply(white_df$Median_income_est, white_df$year, mean)
-white_result_df < data.frame( year = as.numeric(names(avg_median_inc)), median_income = as.numeric(avg_median_inc), CPP = white_df$CPP[match(names(avg_median_inc), as.character(white_df$year))]
+white_result_df < data.frame(year = as.numeric(names(avg_median_inc)), median_income = as.numeric(avg_median_inc), CPP = white_df$CPP[match(names(avg_median_inc), as.character(white_df$year))]
 
 # create df for all rows that do not include "white" or "all" in the race column. You will need to average the median income for all matching years.
 # the only columns we need are "year", "median income" (averaged), and "CPP".
 
-other_race_rows <- !grep1("white|all", inflation_df$Race, ignore.case = TRUE)
+other_race_rows <- !grepl("white|all", inflation_df$Race, ignore.case = TRUE)
 other_races_df <- inflation_df[other_race_rows, ]
-avg_med_inc_other <- trapply(other_races_df$Median_income_est, other_races_df$year, mean)
+avg_med_inc_other <- tapply(other_races_df$Median_income_est, other_races_df$year, mean)
 other_result_df <- data.frame(
   year = as.numeric(names(avg_med_inc_other_income)),
   median_income = as.numeric(avg_med_inc_other_income),
