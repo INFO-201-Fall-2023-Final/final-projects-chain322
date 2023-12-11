@@ -24,14 +24,14 @@ analysis_view <- fluidPage(
       selectInput(
         inputId = "graph_choice",
         label = "Select Dataset",
-        choices = list("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
+        # choices = list("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
+          choices = c("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
         htmlOutput(outputId = "data_group"),
         htmlOutput(outputId = "data_intro")
       ),
     mainPanel(
       plotlyOutput(outputId = "data")
     )
-  ),
   
   titlePanel("What can we assume from this data?"),
   br(),
@@ -58,10 +58,13 @@ server <- function(input, output) {
   output$data_group <- renderUI({
     
     # create a for loop that displays a more professional title depending on what is selected from the dropdown.
-    
     # "US Median Income Growth and Consumer Purchasing Power Decline", "How Consumer Purchasing Power affects our income", 
     # "The Growing Gap: Racial Systematic Oppression Observed Through Income Trends"
   })
+  title <- switch(input$graph_choice,
+                  "Median income VS. CPP" = "US Median Inocme Growth and Consumer Purchasing Power Decline",
+                  "Median Income Affected by CPP" = "How Consumer Purchasing Power affects our income",
+                  "Racial disparity in income" = "The Growing Gap: Racial Systematic Oppression Observed Through Income Trends"
   
   output$data <- renderPlotly({
     
@@ -76,13 +79,23 @@ server <- function(input, output) {
   output$data_intro <- renderUI({
     
     # Create a for loop that displays the introduction of the data that has been selected. 
-    
+      intro_text <- switch(input$graph_choice,
+                         "Median income VS. CPP" = "Intro for median income vs CPP", "Median Income Affected by CPP" = "Introduction for Median Income Affected by CPP",
+                         "Racial disparity in income" = "Introduction for Racial disparity in income"
+                         )
+    HTML(intro_text)
+  
   })
   
   output$data_assump <- renderUI({
     
     # create a for loop that displays the conclusion of the data that has been selected.
-    
+      intro_text <- switch(input$graph_choice,
+                         "Median income VS. CPP" = "Conclisoon for median income vs CPP", "Median Income Affected by CPP" = "Conclusion for Median Income Affected by CPP",
+                         "Racial disparity in income" = "Conclusion for Racial disparity in income"
+                         )
+    HTML(intro_text)
+  
   })
   
   
