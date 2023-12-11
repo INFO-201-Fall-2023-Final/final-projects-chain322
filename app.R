@@ -26,7 +26,7 @@ analysis_view <- fluidPage(
         # choices = list("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
           choices = c("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
         # htmlOutput(outputId = "data_group"),
-        # htmlOutput(outputId = "data_intro")
+        h5(outputId = "data_intro"),
       ),
     mainPanel(
       plotlyOutput(outputId = "data")
@@ -73,10 +73,11 @@ server <- function(input, output) {
   output$data <- renderPlotly({
     
     # assign p with the value of the function that puts out one of the 3 graphs depending on what the user selects from the dropdown
+    p<- generate_selected_graph(input$graph_choice)
     
-    # p <- ggplotly(p, tooltip = "text")
-    # return(p)
-    # plot(p)
+    p <- ggplotly(p, tooltip = "text")
+    return(p)
+    plot(p)
     
   })
   

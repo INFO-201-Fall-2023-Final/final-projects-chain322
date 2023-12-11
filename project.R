@@ -47,42 +47,69 @@ other_result_df <- data.frame(
 
 ### GRAPH STUFF from app.r file:
 
-generate_median_income_graph <- function(data) {
-  # Your code to generate the median income graph
-  # Example: ggplot(data, aes(x = ..., y = ...)) + ...
-
-    ggplot(data, aes(x = Year, y = df$Median_income_est)) +
-    geom_line() +
-    labs(title = "Median Income Over Time", x = "Year", y = "Median Income")
-}
-
-
-# Function to generate the CPP-affected income graph
-generate_cpp_affected_income_graph <- function(data) {
-  # Your code to generate the CPP-affected income graph
-  # Example: ggplot(data, aes(x = ..., y = ...)) + ...
-  ggplot(data, aes(x = Year, y = CPP)) +
-    geom_line() +
-    labs(title = "CPP-Affected Income Over Time", x = "Year", y = "CPP Affected Income")
-}
-
-# Function to generate the racial income graph
-generate_racial_income_graph <- function(data) {
-  # Your code to generate the racial income graph
-  # Example: ggplot(data, aes(x = ..., y = ..., color = ...)) + ...
-  ggplot(data, aes(x = Year, y = df$Median_income_est, color = Race)) +
-    geom_line() +
-    labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income")
-}
-
-
-generate_selected_graph <- function(data, choice) {
+generate_selected_graph <- function(choice) {
   if (choice == "Median income VS. CPP") {
-    return(generate_median_income_graph(data))
+    return(
+      ggplot(filtered_df, aes(x = year)) +
+        geom_line(aes(y = Median_income_est), color = "blue", linetype = "solid", linewidth = 1) +
+        geom_line(aes(y = CPP * 200), color = "red", linetype = "dashed", linewidth = 1) +
+        labs(title = "Median Income VS. CPP", x = "Year", y = "Comparitive Value", color = "Variable")
+    )
   } else if (choice == "Median Income Affected by CPP") {
-    return(generate_cpp_affected_income_graph(data))
+    return(
+      ggplot(filtered_df, aes(x = year, y = CPP)) +
+        geom_line() +
+        labs(title = "CPP Affected Income Over Time", x = "Year", y = "CPP Affected Income")
+    )
+  } else if (choice == "Racial disparity in income") {
+    return(
+      ggplot(filtered_df, aes(x = year, y = Median_income_est, color = Race)) +
+        geom_line() +
+        labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income")
+    )
   } else {
-    return(generate_racial_income_graph(data))
+    stop("Invalid choice. Please select a valid option.")
   }
 }
+
+
+
+# generate_median_income_graph <- function(data) {
+#   # Your code to generate the median income graph
+#   # Example: ggplot(data, aes(x = ..., y = ...)) + ...
+# 
+#     ggplot(data, aes(x = Year, y = df$Median_income_est)) +
+#     geom_line() +
+#     labs(title = "Median Income Over Time", x = "Year", y = "Median Income")
+# }
+# 
+# 
+# # Function to generate the CPP-affected income graph
+# generate_cpp_affected_income_graph <- function(data) {
+#   # Your code to generate the CPP-affected income graph
+#   # Example: ggplot(data, aes(x = ..., y = ...)) + ...
+#   ggplot(data, aes(x = Year, y = CPP)) +
+#     geom_line() +
+#     labs(title = "CPP-Affected Income Over Time", x = "Year", y = "CPP Affected Income")
+# }
+# 
+# # Function to generate the racial income graph
+# generate_racial_income_graph <- function(data) {
+#   # Your code to generate the racial income graph
+#   # Example: ggplot(data, aes(x = ..., y = ..., color = ...)) + ...
+#   ggplot(data, aes(x = Year, y = df$Median_income_est, color = Race)) +
+#     geom_line() +
+#     labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income")
+# }
+# 
+# 
+# generate_selected_graph <- function(data, choice) {
+#   if (choice == "Median income VS. CPP") {
+#     return(generate_median_income_graph(data))
+#   } else if (choice == "Median Income Affected by CPP") {
+#     return(generate_cpp_affected_income_graph(data))
+#   } else {
+#     return(generate_racial_income_graph(data))
+#   }
+# }
                              
