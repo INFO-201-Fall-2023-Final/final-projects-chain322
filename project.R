@@ -48,6 +48,7 @@ other_result_df <- data.frame(
 ### GRAPH STUFF from app.r file:
 
 generate_selected_graph <- function(choice) {
+
   if (choice == "Median income VS. CPP") {
     return(
       ggplot(filtered_df, aes(x = year)) +
