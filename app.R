@@ -16,14 +16,14 @@ intro_view <- fluidPage(
   mainPanel(
     HTML("<p>This Shiny app provides an analysis of...</p>"),
     HTML("<p>The analysis is based on data collected from...</p>"),
-    HTML("<p>In ths context of...</p>"),
+    HTML("<p>In this context of...</p>"),
     HTML("<p>Data sources include...</p>"),
     # After some reserach I learned in shiny the 'tags' function is used to create HTML tags in R.
     # Here tags$div creates a division tage to help group and style content. We also used 'tags$img to
     #embed images using src for specficing the path to image, we use tags$a for anchoring a hyperlink to the url and the learn more should be clickable.
-    tags$div(
-      tags$img(src = "path/to/your/imag.png", width = 400),
-      tags$a(href = "https://example.com", "learn more")
+#    tags$div(
+#      tags$img(src = "path/to/your/imag.png", width = 400),
+ #     tags$a(href = "https://example.com", "learn more")
 )
 
 analysis_view <- fluidPage(
