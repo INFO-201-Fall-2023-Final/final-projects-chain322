@@ -20,23 +20,23 @@ analysis_view <- fluidPage(
 #This is where the 3 interactive datasets should go
   titlePanel("Wealth Gap Analysis"),
   sidebarLayout(
-    sidebarPanel = 
-      selectInput(
+    sidebarPanel = selectInput(
         inputId = "graph_choice",
         label = "Select Dataset",
         # choices = list("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
           choices = c("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
-        htmlOutput(outputId = "data_group"),
-        htmlOutput(outputId = "data_intro")
+        # htmlOutput(outputId = "data_group"),
+        # htmlOutput(outputId = "data_intro")
       ),
     mainPanel(
       plotlyOutput(outputId = "data")
     )
-  
-  titlePanel("What can we assume from this data?"),
-  br(),
-  htmlOutput(outputId = "data_assump"),
+),
+titlePanel("What can we assume from this data?"),
+br(),
+htmlOutput(outputId = "data_assump")
 )
+
   
 
 
@@ -60,11 +60,15 @@ server <- function(input, output) {
     # create a for loop that displays a more professional title depending on what is selected from the dropdown.
     # "US Median Income Growth and Consumer Purchasing Power Decline", "How Consumer Purchasing Power affects our income", 
     # "The Growing Gap: Racial Systematic Oppression Observed Through Income Trends"
+    
+    title <- switch(input$graph_choice,
+                    "Median income VS. CPP" = "US Median Income Growth and Consumer Purchasing Power Decline",
+                    "Median Income Affected by CPP" = "How Consumer Purchasing Power affects our income",
+                    "Racial disparity in income" = "The Growing Gap: Racial Systematic Oppression Observed Through Income Trends"
+    )
+    titlePanel(title)
   })
-  title <- switch(input$graph_choice,
-                  "Median income VS. CPP" = "US Median Inocme Growth and Consumer Purchasing Power Decline",
-                  "Median Income Affected by CPP" = "How Consumer Purchasing Power affects our income",
-                  "Racial disparity in income" = "The Growing Gap: Racial Systematic Oppression Observed Through Income Trends"
+ 
   
   output$data <- renderPlotly({
     
