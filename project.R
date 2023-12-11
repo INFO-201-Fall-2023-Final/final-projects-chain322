@@ -5,7 +5,7 @@ library(shiny)
 library(plotly)
 
 inflation_df <- read.csv("income_inflation.csv")
-
+#
 # convert the median income column to numeric value
 inflation_df$Median_income_est <- as.numeric(gsub(",", "", inflation_df$Median_income_est))
 
