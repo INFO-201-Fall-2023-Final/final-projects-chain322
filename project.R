@@ -4,6 +4,7 @@ library(ggplot2)
 library(shiny)
 library(plotly)
 
+
 inflation_df <- read.csv("income_inflation.csv")
 #
 # convert the median income column to numeric value
@@ -47,9 +48,10 @@ other_result_df <- data.frame(
 
 ### GRAPH STUFF from app.r file:
 
-generate_selected_graph <- function(choice) {
+generate_selected_graph <- function(choice, apply_cpp) {
 
   if (choice == "Median income VS. CPP") {
+    if (apply_cpp){
     return(
       ggplot(filtered_df, aes(x = year)) +
         geom_line(aes(y = Median_income_est, color = "Median Income"), linetype = "solid", linewidth = 1) +
@@ -57,12 +59,29 @@ generate_selected_graph <- function(choice) {
         labs(title = "Median Income VS. CPP", x = "Year", y = "Comparitive Value", color = "Variable") +
         scale_color_manual(values = c("blue", "red"), name = "Variable", labels = c("Median Income", "CPP (Scaled)"))
     )
+    } else {
+      return(
+        ggplot(filtered_df, aes(x = year)) +
+          geom_line(aes(y = Median_income_est, color = "Median Income"), linetype = "solid", linewidth = 1) +
+          geom_line(aes(y = CPP * 300, color = "CPP (Scaled)"), linetype = "dashed", linewidth = 1, alpha = 0) +
+          labs(title = "Median Income VS. CPP", x = "Year", y = "Comparitive Value", color = "Variable") +
+          scale_color_manual(values = c("blue", "red"), name = "Variable", labels = c("Median Income", "CPP (Scaled)"))
+      )
+      }
   } else if (choice == "Median Income Affected by CPP") {
+    if (apply_cpp){
     return(
-      ggplot(filtered_df, aes(x = year, y = CPP)) +
+      ggplot(filtered_df, aes(x = year, y = Median_income_est * (CPP / 100))) +
         geom_line() +
-        labs(title = "CPP Affected Income Over Time", x = "Year", y = "CPP Affected Income")
+        labs(title = "CPP Affected Income Over Time", x = "Year", y = "CPP Affected Median Income")
     )
+    } else {
+      return(
+        ggplot(filtered_df, aes(x = year, y = Median_income_est)) +
+          geom_line() +
+          labs(title = "CPP Affected Income Over Time", x = "Year", y = "Median Income")
+      )
+      }
   } else if (choice == "Racial disparity in income") {
     return(
       ggplot(filtered_df, aes(x = year, y = Median_income_est, color = Race)) +

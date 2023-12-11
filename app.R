@@ -30,13 +30,20 @@ analysis_view <- fluidPage(
 #This is where the 3 interactive datasets should go
   titlePanel("Wealth Gap Analysis"),
   sidebarLayout(
-    sidebarPanel = selectInput(
+    sidebarPanel( 
+      selectInput(
         inputId = "graph_choice",
         label = "Select Dataset",
         # choices = list("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
           choices = c("Median income VS. CPP", "Median Income Affected by CPP", "Racial disparity in income"),
         # htmlOutput(outputId = "data_group"),
-        h5(outputId = "data_intro"),
+      ),
+      checkboxInput("checkbox", label = "Apply Consumer Purchasing Power", value = FALSE),
+
+      hr(),
+      fluidRow(column(3, verbatimTextOutput("value"))),
+      
+      h5(outputId = "data_intro"),
       ),
     mainPanel(
       plotlyOutput(outputId = "data")
@@ -61,9 +68,21 @@ ui <- navbarPage( #this creates the tabs at top and the title in corner
 
 # server interface
 server <- function(input, output) {
+ 
   
+  cpp_enabled <- reactive({
+    input$checkbox
+  })
+  
+  selected_graph <- reactive({
+    generate_selected_graph(input$graph_choice, input$checkbox)
+  })
+  
+   
   # need to write function in project.R to pull one of 3 graphs: med income line, CPP affected income, or racial income based on input 
   # from choices above. Need to make the three graphs in project.R as well.  
+  
+
   
   output$data_group <- renderUI({
     
@@ -83,9 +102,9 @@ server <- function(input, output) {
   output$data <- renderPlotly({
     
     # assign p with the value of the function that puts out one of the 3 graphs depending on what the user selects from the dropdown
-    p<- generate_selected_graph(input$graph_choice)
+    # p<- generate_selected_graph(input$graph_choice)
     
-    p <- ggplotly(p, tooltip = "text")
+    p <- ggplotly(selected_graph(), tooltip = "text")
     return(p)
     plot(p)
     
@@ -113,7 +132,8 @@ server <- function(input, output) {
   
   })
   
-  
+  # # checkbox for applying cpp
+  # output$value <- renderPrint({ input$checkbox })
   
 }
 
