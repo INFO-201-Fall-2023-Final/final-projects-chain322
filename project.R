@@ -48,8 +48,7 @@ other_result_df <- data.frame(
 ### GRAPH STUFF from app.r file:
 
 generate_median_income_graph <- function(data) {
-  # Your code to generate the median income graph
-  # Example: ggplot(data, aes(x = ..., y = ...)) + ...
+ 
 
     ggplot(data, aes(x = Year, y = df$Median_income_est)) +
     geom_line() +
@@ -57,19 +56,15 @@ generate_median_income_graph <- function(data) {
 }
 
 
-# Function to generate the CPP-affected income graph
+# generates the CPP-affected income graph
 generate_cpp_affected_income_graph <- function(data) {
-  # Your code to generate the CPP-affected income graph
-  # Example: ggplot(data, aes(x = ..., y = ...)) + ...
   ggplot(data, aes(x = Year, y = CPP)) +
     geom_line() +
     labs(title = "CPP-Affected Income Over Time", x = "Year", y = "CPP Affected Income")
 }
 
-# Function to generate the racial income graph
+#  generates the racial income graph
 generate_racial_income_graph <- function(data) {
-  # Your code to generate the racial income graph
-  # Example: ggplot(data, aes(x = ..., y = ..., color = ...)) + ...
   ggplot(data, aes(x = Year, y = df$Median_income_est, color = Race)) +
     geom_line() +
     labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income")
