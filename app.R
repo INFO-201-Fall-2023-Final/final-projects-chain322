@@ -24,7 +24,7 @@ intro_view <- fluidPage(
 #    tags$div(
 #      tags$img(src = "path/to/your/imag.png", width = 400),
  #     tags$a(href = "https://example.com", "learn more")
-)
+) )
 
 analysis_view <- fluidPage(
 #This is where the 3 interactive datasets should go
