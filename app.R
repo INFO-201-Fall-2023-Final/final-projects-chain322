@@ -8,7 +8,7 @@ source("project.R")
 
 inflation_df <- read.csv("income_inflation.csv")
 
-
+#
 # user interface pages
 intro_view <- fluidPage(
 # this is where I will add the overview, background info, context, sources, and "additional flare" (images and links)
