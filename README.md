@@ -1,6 +1,10 @@
 # INFO-201-Group-Final
 INFO 201 B final - Repo
 
+h2(Shiny app published link:)
+https://thmcdan.shinyapps.io/final-projects-chain322/
+
+
 TO DO:
 - [ ] App.R
     - [ ] Introduction
