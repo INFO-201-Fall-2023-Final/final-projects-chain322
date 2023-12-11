@@ -1,0 +1,13 @@
+name: final-projects-chain322
+title: final-projects-chain322
+username: thmcdan
+account: thmcdan
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10770025
+bundleId: 8033940
+url: https://thmcdan.shinyapps.io/final-projects-chain322/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Project proposal content.pages
