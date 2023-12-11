@@ -52,7 +52,7 @@ generate_selected_graph <- function(choice) {
     return(
       ggplot(filtered_df, aes(x = year)) +
         geom_line(aes(y = Median_income_est), color = "blue", linetype = "solid", linewidth = 1) +
-        geom_line(aes(y = CPP * 200), color = "red", linetype = "dashed", linewidth = 1) +
+        geom_line(aes(y = CPP * 300), color = "red", linetype = "dashed", linewidth = 1) +
         labs(title = "Median Income VS. CPP", x = "Year", y = "Comparitive Value", color = "Variable")
     )
   } else if (choice == "Median Income Affected by CPP") {
