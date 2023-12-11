@@ -54,7 +54,15 @@ server <- function(input, output) {
   
   # need to write function in project.R to pull one of 3 graphs: med income line, CPP affected income, or racial income based on input 
   # from choices above. Need to make the three graphs in project.R as well.  
-  
+  generate_selected_graph <- function(data, choice) {
+  if (choice == "Median income VS. CPP") {
+    return(generate_median_income_graph(data))
+  } else if (choice == "Median Income Affected by CPP") {
+    return(generate_cpp_affected_income_graph(data))
+  } else (choice == "Racial disparity in income") {
+    return(generate_racial_income_graph(data))
+  }
+}
   output$data_group <- renderUI({
     
     # create a for loop that displays a more professional title depending on what is selected from the dropdown.
