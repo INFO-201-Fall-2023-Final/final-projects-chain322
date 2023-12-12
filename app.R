@@ -137,8 +137,25 @@ server <- function(input, output) {
     
     # create a for loop that displays the conclusion of the data that has been selected.
       intro_text <- switch(input$graph_choice,
-                         "Median income VS. CPP" = "Conclisoon for median income vs CPP", "Median Income Affected by CPP" = "Conclusion for Median Income Affected by CPP",
-                         "Racial disparity in income" = "Conclusion for Racial disparity in income"
+                         "Median income VS. CPP" = 
+                           "This data shows the upward trend of income from the past 50+ year. We can see a steady rise
+                         of median income over time. Upon using the checkbox to see the Consumer Purchasing Power, we can see the 
+                         value of our dollar has a much steeper decline. We see that the Income people are earning has not at all
+                         kept up with inflation. If it had, we would see these lines being closer to mirror images with similar
+                         slopes.", 
+                         "Median Income Affected by CPP" = 
+                           "This graph, before and after applying the Consumer Purchasing Power, shows how that purchasing power has
+                         directly affected our ability to afford things. It shows how, although making more money than we have in 
+                         the past, Americans can afford much less. We are valued at less than we ever have been before as the
+                         majority of people in this country.",
+                         "Racial disparity in income" = 
+                           "As we can see with the previous data, the majority of Americans are suffering. We are able to afford
+                         tremendously less than we have in the past. As our alotment shrinks further and further, this graph shows that
+                         people of color are suffering even more. Continously victims of systematic oppression, non-white people in America
+                         are suffering the devaluement like everyone else is, but worse still, being ever worse off in these times of 
+                         financial collapse. Thinking about how little we are able to financially afford compared to the single family income
+                         households of the past, and how much more it is affecting people of color, it is hard to envision how the 
+                         people who hold their power over us continue getting away with it."
                          )
     HTML(intro_text)
   
