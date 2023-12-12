@@ -43,7 +43,7 @@ analysis_view <- fluidPage(
       hr(),
       fluidRow(column(3, verbatimTextOutput("value"))),
       
-      h5(outputId = "data_intro"),
+      htmlOutput(outputId = "data_intro"),
       ),
     mainPanel(
       plotlyOutput(outputId = "data")
@@ -114,8 +114,12 @@ server <- function(input, output) {
     
     # Create a for loop that displays the introduction of the data that has been selected. 
       intro_text <- switch(input$graph_choice,
-                         "Median income VS. CPP" = "Intro for median income vs CPP", "Median Income Affected by CPP" = "Introduction for Median Income Affected by CPP",
-                         "Racial disparity in income" = "Introduction for Racial disparity in income"
+                         "Median income VS. CPP" = 
+                           "Intro for median income vs CPP", 
+                         "Median Income Affected by CPP" = 
+                           "Introduction for Median Income Affected by CPP",
+                         "Racial disparity in income" = 
+                           "Introduction for Racial disparity in income"
                          )
     HTML(intro_text)
   
