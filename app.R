@@ -114,12 +114,20 @@ server <- function(input, output) {
     
     # Create a for loop that displays the introduction of the data that has been selected. 
       intro_text <- switch(input$graph_choice,
-                         "Median income VS. CPP" = 
-                           "Intro for median income vs CPP", 
-                         "Median Income Affected by CPP" = 
-                           "Introduction for Median Income Affected by CPP",
-                         "Racial disparity in income" = 
-                           "Introduction for Racial disparity in income"
+                           "Median income VS. CPP" = 
+                             "In this graph, we can see how the median income for Americans has changed since the 1960's compared to
+                         the purchasing power (CPP) that their money had. We used the Median income since the Mean income is much higher,
+                         more reflective of the wealth gap than the generation of income over time. The Median income is in 
+                         U.S. dollars while the Consumer Purchasing Power is a percentage of the value, scaled to show how it has
+                         changed over time between 300% and 34%.", 
+                           "Median Income Affected by CPP" = 
+                             "In this graph, we can see the the median income of Americans again. This time, watch how the income
+                         is changed when you apply Consumer Purchasing Power with the checkbox above. This will show the purchasing
+                         power the money Americans are earning really has.",
+                           "Racial disparity in income" = 
+                             "This final graph shows the continued disparity between white workers and workers of color. 
+                        We can use the same Consumer Purchase Power effect on this graph with the checkbox. This will apply the
+                         purchasing power effect to the median income of both white people and people of color."
                          )
     HTML(intro_text)
   

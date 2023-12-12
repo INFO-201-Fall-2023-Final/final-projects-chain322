@@ -5,9 +5,8 @@ account: thmcdan
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10770025
-bundleId: 8037364
+bundleId: 8037586
 url: https://thmcdan.shinyapps.io/final-projects-chain322/
 version: 1
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: Project proposal content.pages
