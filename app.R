@@ -21,7 +21,10 @@ how the relationsghip between the purchasing power and income. </p>"),
     # Here tags$div creates a division tage to help group and style content. We also used 'tags$img to
     #embed images using src for specficing the path to image, we use tags$a for anchoring a hyperlink to the url and the learn more should be clickable.
     tags$div(
-      tags$img(src = "path/to/your/imag.png", width = 400),
+      tags$img(src = "incomeinequality.png", width = 400),
+      br(),
+      h5("Source: thehill.com"),
+      br(),
       br(),
       tags$a(href = "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi3_sKD4oiDAxUVMzQIHTfrCJIQFnoECA8QAw&url=https%3A%2F%2Fwww.aclu.org%2Fnews%2Fracial-justice%2Fvisualizing-the-racial-wealth-gap%23%3A~%3Atext%3DThe%2520Black%252Dwhite%2520income%2520gap%2Cfor%2520a%2520white%2520family%2520of&usg=AOvVaw2XUFcyYiuwJxIEyhcAAhzo&opi=89978449", "to learn more about racial income disparities"),
       br(),
