@@ -41,10 +41,11 @@ other_races_df <- inflation_df[other_race_rows & !is.na(inflation_df$Median_inco
 avg_med_inc_other <- tapply(other_races_df$Median_income_est, other_races_df$year, mean)
 other_result_df <- data.frame(
   year = as.numeric(names(avg_med_inc_other)),
-  median_income = as.numeric(avg_med_inc_other),
-  CPP = other_races_df$CPP[match(names(avg_med_inc_other), as.character(other_races_df$year))] )
+  median_income = as.numeric(avg_med_inc_other)
+  )
 
-
+# combine the two race df into one to be accessed by one graph.
+race_med_inc <- merge(white_result_df, other_result_df, by = "year", suffixes = c("_w", "_poc"))
 
 ### GRAPH STUFF from app.r file:
 
@@ -83,11 +84,23 @@ generate_selected_graph <- function(choice, apply_cpp) {
       )
       }
   } else if (choice == "Racial disparity in income") {
+    if (apply_cpp){
     return(
-      ggplot(filtered_df, aes(x = year, y = Median_income_est, color = Race)) +
-        geom_line() +
-        labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income")
+      ggplot(race_med_inc, aes(x = year)) +
+        geom_line(aes(y = median_income_w * (CPP / 100), color = "White Median Income"), linetype = "solid", linewidth = 1) +
+        geom_line(aes(y = median_income_poc * (CPP / 100), color = "POC Median Income"), linetype = "solid", linewidth = 1) +
+        labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income", color = "Variable") +
+        scale_color_manual(values = c("lightblue", "lightblue4"), name = "Variable", labels = c("White Median Income", "POC Median Income"))
     )
+    } else {
+      return(
+        ggplot(race_med_inc, aes(x = year)) +
+          geom_line(aes(y = median_income_w, color = "White Median Income"), linetype = "solid", linewidth = 1) +
+          geom_line(aes(y = median_income_poc, color = "POC Median Income"), linetype = "solid", linewidth = 1) +
+          labs(title = "Racial Disparity in Income Over Time", x = "Year", y = "Median Income", color = "Variable") +
+          scale_color_manual(values = c("lightblue", "lightblue4"), name = "Variable", labels = c("White Median Income", "POC Median Income"))
+      )
+    }
   } else {
     stop("Invalid choice. Please select a valid option.")
   }
