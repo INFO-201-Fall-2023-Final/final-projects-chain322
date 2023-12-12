@@ -14,14 +14,14 @@ intro_view <- fluidPage(
 # this is where I will add the overview, background info, context, sources, and "additional flare" (images and links)
   titlePanel("Introduction"),
   mainPanel(
-    HTML("<p>This Shiny app provides an analysis of racial disparities using CPP(Consumer Purchasing Power) and median income. Another goal of ours was to explore
-how the relationsghip between the purchasing power and income. </p>"),
-    HTML("<p>Data sources include the US Census, and Federal Reserve Bank of St. Louis that details the buying power of the U.S. dollar from 1913 up to September, 2023 </p>"),
+    HTML("<p>This Shiny app provides an analysis of the income gap, as well as racial disparities using CPP(Consumer Purchasing Power) and median income. Another goal of ours was to explore
+how the relationship between the purchasing power and income has changed over time. </p>"),
+    HTML("<p>Data sources include the US Census, and Federal Reserve Bank of St. Louis that details the buying power of the U.S. dollar from 1913 up to September, 2023. The data in our graphs spans between 1967 and 2022. </p>"),
     # After some reserach I learned in shiny the 'tags' function is used to create HTML tags in R.
     # Here tags$div creates a division tage to help group and style content. We also used 'tags$img to
     #embed images using src for specficing the path to image, we use tags$a for anchoring a hyperlink to the url and the learn more should be clickable.
     tags$div(
-      tags$img(src = "incomeinequality.png", width = 400),
+      tags$img(src = "https://thehill.com/wp-content/uploads/sites/2/2021/02/ca_incomeinequality_istock.jpg?w=1280&h=720&crop=1", height = 400, ),
       br(),
       h5("Source: thehill.com"),
       br(),
