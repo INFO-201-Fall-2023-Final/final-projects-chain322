@@ -1,0 +1,7 @@
+#graph one: This graph shows median income vs CPP. CPP is scaled here. 
+#graph two: The second graph shows median income affected by CPP. If the user wants CPP to affect the graph the y axis will be CPP Affected Median Income.
+# Else the graph will just use Median income for the y axis.
+
+#graph three: The third graph shows white peoples average income in comparison to a person of colors CPP.
+
+# CPP uses the checkbox to change the numbers on the graph to be manipulated by the CPP.
